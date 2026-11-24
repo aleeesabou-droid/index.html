@@ -172,7 +172,6 @@
         <h1>✨ Un mic quiz hihihi :)) ✨</h1>
         <p class="subtitle">Completează cu sinceritate, promit că nu mă supăr... cred 👀</p>
 
-        <!-- ÎNLOCUIEȘTE LINKUL DE MAI JOS CU LINKUL TĂU DE LA FORMSPREE -->
         <form id="quizForm" action="https://formspree.io/f/mljbazrq" method="POST">
             
             <div class="question-box">
@@ -181,18 +180,18 @@
             </div>
 
             <div class="question-box">
-                <label for="q1">2. Care a fost prima ta impresie despre mine?(raspuns sincer pls) 🌸</label>
+                <label for="q1">2. Care a fost prima ta impresie despre mine? (raspuns sincer pls) 🌸</label>
                 <textarea id="q1" name="Prima_impresie" placeholder="Fii sincer(ă)..." required></textarea>
             </div>
 
             <div class="question-box">
                 <label for="q2">3. Care este cel mai drăguț lucru despre mine? 🌟</label>
-                <textarea id="q2" name="2" placeholder="Scrie aici..." required></textarea>
+                <textarea id="q2" name="Cel_mai_dragut_lucru" placeholder="Scrie aici..." required></textarea>
             </div>
 
             <div class="question-box">
-                <label for="q3">4.Unde ai vrea să ieșim în viitor ? </label>
-                <textarea id="q3" name="C3" placeholder="Scrie aici..." required></textarea>
+                <label for="q3">4. Unde ai vrea să ieșim în viitor? </label>
+                <textarea id="q3" name="Unde_iesim_in_viitor" placeholder="Scrie aici..." required></textarea>
             </div>
 
             <div class="question-box">
@@ -201,7 +200,7 @@
             </div>
 
             <div class="question-box">
-                <label for="q5">6. Un mesaj drăguț pentru mine : 💌</label>
+                <label for="q5">6. Un mesaj drăguț pentru mine: 💌</label>
                 <textarea id="q5" name="Mesaj" placeholder="Scrie orice vrei..." required></textarea>
             </div>
 
@@ -265,8 +264,8 @@
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            if (form.action.includes('https://formspree.io/f/mljbazrq')) {
+
+            if (form.action.includes('PUNE_AICI_LINKUL_FORMSPREE')) {
                 statusMsg.style.display = 'block';
                 statusMsg.innerText = '⚠️ Nu ai pus încă linkul Formspree în cod!';
                 return;
