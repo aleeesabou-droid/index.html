@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracol & Întrebări ✨</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(125deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #84fab0, #8fd3f4);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Steluțe și sclipici pe fundal */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            color: white;
+            text-shadow: 0 0 8px #fff, 0 0 15px #ff69b4;
+            animation: twinkle 2.5s infinite ease-in-out;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.7) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.3) rotate(25deg); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            padding: 32px 28px;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d63384;
+            margin-top: 0;
+            font-size: 1.8rem;
+            text-shadow: 0 2px 10px rgba(214, 51, 132, 0.2);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .question-box {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #4a235a;
+            margin-bottom: 6px;
+            font-size: 0.98rem;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #f3c6e8;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.95);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            outline: none;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: #d63384;
+            box-shadow: 0 0 10px rgba(214, 51, 132, 0.25);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .final-question {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 2px dashed #f3c6e8;
+        }
+
+        .final-question p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #c2185b;
+            margin-bottom: 20px;
+        }
+
+        .buttons-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            min-height: 70px;
+            position: relative;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #btnDa {
+            background: linear-gradient(45deg, #ff4081, #ff80ab);
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4);
+        }
+
+        #btnDa:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(255, 64, 129, 0.6);
+        }
+
+        #btnNu {
+            background: #e0e0e0;
+            color: #555;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: left 0.15s ease, top 0.15s ease;
+        }
+
+        #statusMessage {
+            text-align: center;
+            margin-top: 18px;
+            font-weight: 600;
+            color: #d63384;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>✨ Un mic quiz hihihi :)) ✨</h1>
+        <p class="subtitle">Completează cu sinceritate, promit că nu mă supăr... cred 👀</p>
+
+        <!-- ÎNLOCUIEȘTE LINKUL DE MAI JOS CU LINKUL TĂU DE LA FORMSPREE -->
+        <form id="quizForm" action="PUNE_AICI_LINKUL_FORMSPREE" method="POST">
+            
+            <div class="question-box">
+                <label for="nume">1. Cum te numești? 💫</label>
+                <input type="text" id="nume" name="Numele_persoanei" placeholder="Scrie-ți numele aici..." required>
+            </div>
+
+            <div class="question-box">
+                <label for="q1">2. Care a fost prima ta impresie despre mine?(raspuns sincer pls) 🌸</label>
+                <textarea id="q1" name="Prima_impresie" placeholder="Fii sincer(ă)..." required></textarea>
+            </div>
+
+            <div class="question-box">
+                <label for="q2">3. Care este cel mai drăguț lucru despre mine? 🌟</label>
+                <textarea id="q2" name="Amintire_preferata" placeholder="Scrie aici..." required></textarea>
+            </div>
+
+            <div class="question-box">
+                <label for="q3">4.Unde ai vrea să ieșim în viitor ? </label>
+                <textarea id="q3" name="Ce_iti_aminteste_de_mine" placeholder="Scrie aici..." required></textarea>
+            </div>
+
+            <div class="question-box">
+                <label for="q4">5. Dacă ai putea să-mi spui un lucru fără să mă supăr, ce ar fi? 🤫</label>
+                <textarea id="q4" name="Secret_sincer" placeholder="Scrie aici..." required></textarea>
+            </div>
+
+            <div class="question-box">
+                <label for="q5">6. Un mesaj drăguț pentru mine : 💌</label>
+                <textarea id="q5" name="Mesaj_sau_provocare" placeholder="Scrie orice vrei..." required></textarea>
+            </div>
+
+            <input type="hidden" name="Ma_place" value="DA (butonul NU a fugit!)">
+
+            <div class="final-question">
+                <p>Întrebarea supremă: Mă placi? 💖</p>
+                <div class="buttons-area">
+                    <button type="submit" id="btnDa">Da! 💖</button>
+                    <button type="button" id="btnNu">Nu 😒</button>
+                </div>
+            </div>
+
+            <div id="statusMessage"></div>
+        </form>
+    </div>
+
+    <script>
+        // Generare steluțe și sclipici pe fundal
+        const symbols = ['✦', '✧', '✨', '★', '⋆', '✺'];
+        for (let i = 0; i < 45; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.fontSize = (Math.random() * 18 + 10) + 'px';
+            sparkle.style.animationDelay = (Math.random() * 3) + 's';
+            document.body.appendChild(sparkle);
+        }
+
+        // Logica pentru butonul "Nu" care fuge de cursor (și la atingere pe telefon)
+        const btnNu = document.getElementById('btnNu');
+
+        function moveButton() {
+            btnNu.style.position = 'fixed';
+            const padding = 30;
+            const maxX = window.innerWidth - btnNu.offsetWidth - padding;
+            const maxY = window.innerHeight - btnNu.offsetHeight - padding;
+
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+
+            btnNu.style.left = randomX + 'px';
+            btnNu.style.top = randomY + 'px';
+        }
+
+        btnNu.addEventListener('mouseover', moveButton);
+        btnNu.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+        btnNu.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // Trimiterea formularului fără a părăsi pagina
+        const form = document.getElementById('quizForm');
+        const statusMsg = document.getElementById('statusMessage');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (form.action.includes('https://formspree.io/f/mljbazrq')) {
+                statusMsg.style.display = 'block';
+                statusMsg.innerText = '⚠️ Nu ai pus încă linkul Formspree în cod!';
+                return;
+            }
+
+            const btnDa = document.getElementById('btnDa');
+            btnDa.disabled = true;
+            btnDa.innerText = 'Se trimite... ✨';
+
+            const data = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    statusMsg.style.display = 'block';
+                    statusMsg.innerText = '💖 Răspunsurile tale au fost trimise cu succes! Știam eu că mă placi! ✨';
+                    form.reset();
+                    btnNu.style.position = 'static';
+                } else {
+                    statusMsg.style.display = 'block';
+                    statusMsg.innerText = '❌ A apărut o eroare la trimitere. Încearcă din nou!';
+                }
+            } catch (error) {
+                statusMsg.style.display = 'block';
+                statusMsg.innerText = '❌ Eroare de conexiune!';
+            } finally {
+                btnDa.disabled = false;
+                btnDa.innerText = 'Da! 💖';
+            }
+        });
+    </script>
+</body>
+</html>
