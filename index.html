@@ -30,7 +30,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Steluțe și sclipici pe fundal */
         .sparkle {
             position: fixed;
             pointer-events: none;
@@ -219,7 +218,6 @@
     </div>
 
     <script>
-        // Generare steluțe și sclipici pe fundal
         const symbols = ['✦', '✧', '✨', '★', '⋆', '✺'];
         for (let i = 0; i < 45; i++) {
             const sparkle = document.createElement('div');
@@ -232,7 +230,6 @@
             document.body.appendChild(sparkle);
         }
 
-        // Logica pentru butonul "Nu" care fuge de cursor (și la atingere pe telefon)
         const btnNu = document.getElementById('btnNu');
 
         function moveButton() {
@@ -258,18 +255,11 @@
             moveButton();
         });
 
-        // Trimiterea formularului fără a părăsi pagina
         const form = document.getElementById('quizForm');
         const statusMsg = document.getElementById('statusMessage');
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-
-            if (form.action.includes('PUNE_AICI_LINKUL_FORMSPREE')) {
-                statusMsg.style.display = 'block';
-                statusMsg.innerText = '⚠️ Nu ai pus încă linkul Formspree în cod!';
-                return;
-            }
 
             const btnDa = document.getElementById('btnDa');
             btnDa.disabled = true;
